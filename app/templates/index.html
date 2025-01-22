@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accueil</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Liste des Tableaux</h1>
+    <div class="tableaux-container">
+        {% for tableau in tableaux %}
+            <div class="tableau-card">
+                <h2>{{ tableau.nom }}</h2>
+                <p>{{ tableau.description }}</p>
+                <p>{{ tableau.prix }} €</p>
+                {% if tableau.image_path %}
+                    <img src="{{ url_for('static', filename='uploads/' ~ tableau.image_path) }}" alt="{{ tableau.nom }}">
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+</body>
+</html>

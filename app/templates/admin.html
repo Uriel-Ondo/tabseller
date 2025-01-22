@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Admin</h1>
+    <h2>Liste des Tableaux</h2>
+    <ul>
+        {% for tableau in tableaux %}
+            <li>
+                {{ tableau.nom }} - {{ tableau.description }} - {{ tableau.prix }} €
+                <a href="{{ url_for('admin.edit_tableau', id=tableau.id) }}">Modifier</a>
+                <form method="POST" action="{{ url_for('admin.delete_tableau', id=tableau.id) }}" style="display:inline;">
+                    <button type="submit">Supprimer</button>
+                </form>
+            </li>
+        {% endfor %}
+    </ul>
+    <a href="{{ url_for('admin.add_tableau') }}">Ajouter un nouveau tableau</a>
+</body>
+</html>

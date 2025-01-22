@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Ajouter un Tableau</h2>
+<form method="POST" enctype="multipart/form-data"> <!-- Ajout de enctype -->
+    {{ form.hidden_tag() }}
+    <div>
+        {{ form.nom.label }}<br>
+        {{ form.nom(size=40) }}<br>
+        {% for error in form.nom.errors %}
+        <span style="color: red;">{{ error }}</span>
+        {% endfor %}
+    </div>
+    <div>
+        {{ form.description.label }}<br>
+        {{ form.description(rows=5, cols=40) }}<br>
+        {% for error in form.description.errors %}
+        <span style="color: red;">{{ error }}</span>
+        {% endfor %}
+    </div>
+    <div>
+        {{ form.prix.label }}<br>
+        {{ form.prix() }}<br>
+        {% for error in form.prix.errors %}
+        <span style="color: red;">{{ error }}</span>
+        {% endfor %}
+    </div>
+    <div>
+        {{ form.image_path.label }}<br>
+        {{ form.image_path() }}<br> <!-- Supprimer size=40 pour laisser Flask-WTF gérer -->
+        {% for error in form.image_path.errors %}
+        <span style="color: red;">{{ error }}</span>
+        {% endfor %}
+    </div>
+    <div>
+        {{ form.submit() }}
+    </div>
+</form>
+{% endblock %}

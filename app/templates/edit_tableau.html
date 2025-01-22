@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modifier Tableau</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Modifier Tableau</h1>
+    <form method="POST" enctype="multipart/form-data">
+        {{ form.hidden_tag() }}
+        {{ form.nom.label }} {{ form.nom }}
+        {{ form.description.label }} {{ form.description }}
+        {{ form.prix.label }} {{ form.prix }}
+        {{ form.image_path.label }} {{ form.image_path }}
+        {{ form.submit }}
+    </form>
+</body>
+</html>
