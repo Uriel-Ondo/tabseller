@@ -4,22 +4,43 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin</title>
+    <!-- Inclure le CSS de Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <h1>Admin</h1>
-    <h2>Liste des Tableaux</h2>
-    <ul>
-        {% for tableau in tableaux %}
-            <li>
-                {{ tableau.nom }} - {{ tableau.description }} - {{ tableau.prix }} €
-                <a href="{{ url_for('admin.edit_tableau', id=tableau.id) }}">Modifier</a>
-                <form method="POST" action="{{ url_for('admin.delete_tableau', id=tableau.id) }}" style="display:inline;">
-                    <button type="submit">Supprimer</button>
-                </form>
-            </li>
-        {% endfor %}
-    </ul>
-    <a href="{{ url_for('admin.add_tableau') }}">Ajouter un nouveau tableau</a>
+    <div class="container">
+        <h1 class="mt-5">Admin</h1>
+        <h2 class="mb-4">Liste des Tableaux</h2>
+        <ul class="list-group mb-4">
+            {% for tableau in tableaux %}
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <span>
+                        <strong>{{ tableau.nom }}</strong> - {{ tableau.description }} - {{ tableau.prix }} €
+                    </span>
+                    <span>
+                        <a href="{{ url_for('admin.edit_tableau', id=tableau.id) }}" class="btn btn-primary btn-sm">Modifier</a>
+                        <form method="POST" action="{{ url_for('admin.delete_tableau', id=tableau.id) }}" style="display:inline;">
+                            <button type="submit" class="btn btn-danger btn-sm">Supprimer</button>
+                        </form>
+                    </span>
+                </li>
+            {% endfor %}
+        </ul>
+        <a href="{{ url_for('admin.add_tableau') }}" class="btn btn-success mb-3">Ajouter un nouveau tableau</a>
+        
+        <!-- Ajout du formulaire de déconnexion -->
+        <form method="POST" action="{{ url_for('auth.logout') }}" class="d-inline">
+            <button type="submit" class="btn btn-warning">Déconnexion</button>
+        </form>
+        
+        <!-- Ajout du bouton pour accéder à la page d'inscription -->
+        <a href="{{ url_for('auth.register') }}" class="btn btn-info ml-2">Ajouter un Admin</a>
+    </div>
+    
+    <!-- Inclure le JS de Bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </body>
 </html>

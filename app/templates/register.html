@@ -3,47 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Modifier Tableau</title>
+    <title>Register</title>
     <!-- Inclure le CSS de Bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
     <div class="container mt-5">
-        <h1 class="mb-4">Modifier Tableau</h1>
-        <form method="POST" enctype="multipart/form-data">
+        <h1 class="mb-4">Register</h1>
+        <form method="POST">
             {{ form.hidden_tag() }}
             <div class="form-group">
-                {{ form.nom.label(class="form-label") }}
-                {{ form.nom(class="form-control") }}
-                {% for error in form.nom.errors %}
+                <label for="username" class="form-label">{{ form.username.label }}</label>
+                {{ form.username(class="form-control") }}
+                {% for error in form.username.errors %}
                 <span class="text-danger">{{ error }}</span>
                 {% endfor %}
             </div>
             <div class="form-group">
-                {{ form.description.label(class="form-label") }}
-                {{ form.description(class="form-control") }}
-                {% for error in form.description.errors %}
+                <label for="email" class="form-label">{{ form.email.label }}</label>
+                {{ form.email(class="form-control") }}
+                {% for error in form.email.errors %}
                 <span class="text-danger">{{ error }}</span>
                 {% endfor %}
             </div>
             <div class="form-group">
-                {{ form.prix.label(class="form-label") }}
-                {{ form.prix(class="form-control") }}
-                {% for error in form.prix.errors %}
+                <label for="password" class="form-label">{{ form.password.label }}</label>
+                {{ form.password(class="form-control") }}
+                {% for error in form.password.errors %}
                 <span class="text-danger">{{ error }}</span>
                 {% endfor %}
             </div>
             <div class="form-group">
-                {{ form.image_path.label(class="form-label") }}
-                {{ form.image_path(class="form-control-file") }}
-                {% for error in form.image_path.errors %}
+                <label for="confirm_password" class="form-label">{{ form.confirm_password.label }}</label>
+                {{ form.confirm_password(class="form-control") }}
+                {% for error in form.confirm_password.errors %}
                 <span class="text-danger">{{ error }}</span>
                 {% endfor %}
             </div>
-            <div class="form-group">
-                {{ form.submit(class="btn btn-primary") }}
-            </div>
+            <button type="submit" class="btn btn-primary">{{ form.submit.label }}</button>
         </form>
     </div>
     

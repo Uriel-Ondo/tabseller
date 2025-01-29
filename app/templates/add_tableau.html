@@ -1,39 +1,39 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h2>Ajouter un Tableau</h2>
-<form method="POST" enctype="multipart/form-data"> <!-- Ajout de enctype -->
+<h2 class="mt-5">Ajouter un Tableau</h2>
+<form method="POST" enctype="multipart/form-data" class="mt-4"> <!-- Ajout de enctype -->
     {{ form.hidden_tag() }}
-    <div>
-        {{ form.nom.label }}<br>
-        {{ form.nom(size=40) }}<br>
+    <div class="form-group">
+        {{ form.nom.label(class="form-label") }}<br>
+        {{ form.nom(class="form-control", size=40) }}<br>
         {% for error in form.nom.errors %}
-        <span style="color: red;">{{ error }}</span>
+        <span class="text-danger">{{ error }}</span>
         {% endfor %}
     </div>
-    <div>
-        {{ form.description.label }}<br>
-        {{ form.description(rows=5, cols=40) }}<br>
+    <div class="form-group">
+        {{ form.description.label(class="form-label") }}<br>
+        {{ form.description(class="form-control", rows=5, cols=40) }}<br>
         {% for error in form.description.errors %}
-        <span style="color: red;">{{ error }}</span>
+        <span class="text-danger">{{ error }}</span>
         {% endfor %}
     </div>
-    <div>
-        {{ form.prix.label }}<br>
-        {{ form.prix() }}<br>
+    <div class="form-group">
+        {{ form.prix.label(class="form-label") }}<br>
+        {{ form.prix(class="form-control") }}<br>
         {% for error in form.prix.errors %}
-        <span style="color: red;">{{ error }}</span>
+        <span class="text-danger">{{ error }}</span>
         {% endfor %}
     </div>
-    <div>
-        {{ form.image_path.label }}<br>
-        {{ form.image_path() }}<br> <!-- Supprimer size=40 pour laisser Flask-WTF gérer -->
+    <div class="form-group">
+        {{ form.image_path.label(class="form-label") }}<br>
+        {{ form.image_path(class="form-control-file") }}<br> <!-- Supprimer size=40 pour laisser Flask-WTF gérer -->
         {% for error in form.image_path.errors %}
-        <span style="color: red;">{{ error }}</span>
+        <span class="text-danger">{{ error }}</span>
         {% endfor %}
     </div>
-    <div>
-        {{ form.submit() }}
+    <div class="form-group">
+        {{ form.submit(class="btn btn-primary") }}
     </div>
 </form>
 {% endblock %}

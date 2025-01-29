@@ -18,11 +18,11 @@ def create_app():
 
     from .routes.main_routes import main_bp
     from .routes.admin_routes import admin_bp
-    from .routes.auth_routes import auth_bp  # Ajoutez cette ligne
+    from .routes.auth_routes import auth_bp
 
     app.register_blueprint(main_bp)
     app.register_blueprint(admin_bp, url_prefix='/admin')
-    app.register_blueprint(auth_bp, url_prefix='/auth')  # Ajoutez cette ligne
+    app.register_blueprint(auth_bp, url_prefix='/auth')
 
     login_manager.login_view = 'auth.login'
 
@@ -30,4 +30,5 @@ def create_app():
 
 @login_manager.user_loader
 def load_user(user_id):
+    from .models import User  # Déplacer l'importation ici
     return User.query.get(int(user_id))

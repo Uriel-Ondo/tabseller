@@ -1,17 +1,32 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bienvenue sur notre site de vente de tableaux</title>
+    <!-- Inclure le CSS de Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
 <body>
-    <header>
+    <header class="bg-primary text-white text-center py-3">
         <h1>Bienvenue sur notre site de vente de tableaux</h1>
     </header>
-    <main>
+    <main class="container mt-4">
         {% with messages = get_flashed_messages(with_categories=true) %}
         {% if messages %}
-        <ul>
+        <ul class="list-group">
             {% for category, message in messages %}
-            <li class="{{ category }}">{{ message }}</li>
+            <li class="list-group-item list-group-item-{{ category }}">{{ message }}</li>
             {% endfor %}
         </ul>
         {% endif %}
         {% endwith %}
         {% block content %}{% endblock %}
     </main>
+    <!-- Inclure le JS de Bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </body>
+</html>

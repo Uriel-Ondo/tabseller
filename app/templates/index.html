@@ -4,21 +4,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Accueil</title>
+    <!-- Inclure le CSS de Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <h1>Liste des Tableaux</h1>
-    <div class="tableaux-container">
-        {% for tableau in tableaux %}
-            <div class="tableau-card">
-                <h2>{{ tableau.nom }}</h2>
-                <p>{{ tableau.description }}</p>
-                <p>{{ tableau.prix }} €</p>
-                {% if tableau.image_path %}
-                    <img src="{{ url_for('static', filename='uploads/' ~ tableau.image_path) }}" alt="{{ tableau.nom }}">
-                {% endif %}
-            </div>
-        {% endfor %}
+    <div class="container mt-5">
+        <h1 class="mb-4">Liste des Tableaux</h1>
+        <div class="row">
+            {% for tableau in tableaux %}
+                <div class="col-md-4">
+                    <div class="card mb-4">
+                        {% if tableau.image_path %}
+                            <img src="{{ url_for('static', filename='uploads/' ~ tableau.image_path) }}" class="card-img-top" alt="{{ tableau.nom }}">
+                        {% endif %}
+                        <div class="card-body">
+                            <h5 class="card-title">{{ tableau.nom }}</h5>
+                            <p class="card-text">{{ tableau.description }}</p>
+                            <p class="card-text"><strong>{{ tableau.prix }} €</strong></p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
     </div>
+    
+    <!-- Inclure le JS de Bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </body>
 </html>
