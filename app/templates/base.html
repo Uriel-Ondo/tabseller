@@ -12,6 +12,25 @@
     <header class="bg-primary text-white text-center py-3">
         <h1>Bienvenue sur notre site de vente de tableaux</h1>
     </header>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light text-center">
+        <div class="container">
+            <a class="navbar-brand" href="{{ url_for('main.index') }}">TabSeller</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('main.index') }}">Accueil</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('main.contact') }}">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
     <main class="container mt-4">
         {% with messages = get_flashed_messages(with_categories=true) %}
         {% if messages %}
@@ -24,6 +43,10 @@
         {% endwith %}
         {% block content %}{% endblock %}
     </main>
+    <!-- Footer -->
+    <footer class="bg-light text-center py-3 mt-4">
+        <p>&copy; 2025 TabSeller. Tous droits réservés.</p>
+    </footer>
     <!-- Inclure le JS de Bootstrap -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
