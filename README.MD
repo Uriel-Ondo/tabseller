@@ -47,7 +47,11 @@ Veuillez ouvrir une issue ou soumettre une pull request.
 ## id
 
 
-User id: uriel@visiotech.me
+User id: admin@mail.com
 password: passer
+
+**Développé avec ❤️ par Uriel-Ondo**  
+*www.netspark.me*
+
 ````
 
